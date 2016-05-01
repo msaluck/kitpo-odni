@@ -62,9 +62,13 @@ public class FrameTransactionInternalFrame extends javax.swing.JInternalFrame im
 		jPanel1 = new javax.swing.JPanel();
 		jPanel2 = new javax.swing.JPanel();
 		jLabel2 = new javax.swing.JLabel();
+		jLabel2.setBounds(12, 13, 75, 15);
 		jLabel25 = new javax.swing.JLabel();
+		jLabel25.setBounds(93, 13, 75, 0);
 		jLabel26 = new javax.swing.JLabel();
+		jLabel26.setBounds(309, 13, 75, 15);
 		dateLabel = new javax.swing.JLabel();
+		dateLabel.setBounds(390, 13, 75, 15);
 		jPanel3 = new javax.swing.JPanel();
 		nameTxt = new javax.swing.JTextField();
 		nameTxt.setBounds(97, 13, 426, 20);
@@ -279,33 +283,6 @@ public class FrameTransactionInternalFrame extends javax.swing.JInternalFrame im
 		dateLabel.setForeground(new java.awt.Color(255, 255, 255));
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		dateLabel.setText(sdf.format(new Date()));
-
-		javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-		jPanel2.setLayout(jPanel2Layout);
-		jPanel2Layout.setHorizontalGroup(
-				jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-				.addGroup(jPanel2Layout.createSequentialGroup()
-						.addContainerGap()
-						.addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-						.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-						.addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-						.addGap(141, 141, 141)
-						.addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-						.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-						.addComponent(dateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-						.addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-				);
-		jPanel2Layout.setVerticalGroup(
-				jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-				.addGroup(jPanel2Layout.createSequentialGroup()
-						.addContainerGap()
-						.addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-								.addComponent(jLabel2)
-								.addComponent(jLabel25)
-								.addComponent(jLabel26)
-								.addComponent(dateLabel))
-						.addContainerGap(14, Short.MAX_VALUE))
-				);
 
 		jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 		jPanel3.setOpaque(false);
@@ -527,28 +504,33 @@ public class FrameTransactionInternalFrame extends javax.swing.JInternalFrame im
 		javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
 		jPanel1Layout.setHorizontalGroup(
 			jPanel1Layout.createParallelGroup(Alignment.LEADING)
-				.addGroup(jPanel1Layout.createSequentialGroup()
+				.addGroup(Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
 					.addContainerGap()
-					.addGroup(jPanel1Layout.createParallelGroup(Alignment.LEADING)
-						.addComponent(jPanel5, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 535, Short.MAX_VALUE)
-						.addComponent(jPanel4, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(jPanel3, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 535, Short.MAX_VALUE)
-						.addComponent(jPanel2, GroupLayout.DEFAULT_SIZE, 535, Short.MAX_VALUE))
+					.addGroup(jPanel1Layout.createParallelGroup(Alignment.TRAILING)
+						.addComponent(jPanel2, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 535, Short.MAX_VALUE)
+						.addComponent(jPanel5, GroupLayout.DEFAULT_SIZE, 535, Short.MAX_VALUE)
+						.addComponent(jPanel4, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(jPanel3, GroupLayout.DEFAULT_SIZE, 535, Short.MAX_VALUE))
 					.addContainerGap())
 		);
 		jPanel1Layout.setVerticalGroup(
 			jPanel1Layout.createParallelGroup(Alignment.LEADING)
-				.addGroup(jPanel1Layout.createSequentialGroup()
+				.addGroup(Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(jPanel2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(jPanel2, GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)
+					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(jPanel3, GroupLayout.PREFERRED_SIZE, 131, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(jPanel4, GroupLayout.PREFERRED_SIZE, 171, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(jPanel5, GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(jPanel5, GroupLayout.PREFERRED_SIZE, 157, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap())
 		);
+		jPanel2.setLayout(null);
+		jPanel2.add(jLabel2);
+		jPanel2.add(jLabel25);
+		jPanel2.add(jLabel26);
+		jPanel2.add(dateLabel);
 		jPanel5.setLayout(null);
 		jPanel5.add(jLabel17);
 		jPanel5.add(frameTxt);
