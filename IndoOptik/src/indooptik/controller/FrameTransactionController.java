@@ -33,5 +33,4 @@ public class FrameTransactionController {
         child.setVisible(true);
         child.setLocation(parent.getWidth()/2,parent.getHeight()/2);
     }
-    
 }

@@ -16,7 +16,7 @@ import javax.swing.JFrame;
  */
 public class Main {
 
-	public static String[] sph = new String[121];
+	public static String[] sph = new String[161];
 	public static String[] cly = new String[25];
 	public static String[] add = new String[9];
 
@@ -33,8 +33,8 @@ public class Main {
 	}
 
 	private static void populateData() {
-		int x = 1525;
-		for (int i = 0; i < 121; i++) {
+		int x = 2025;
+		for (int i = 0; i < sph.length; i++) {
 			x = x-25;
 			if (Math.signum(x)==1) {
 				sph[i] = "+"+x;

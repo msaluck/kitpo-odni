@@ -33,6 +33,7 @@ import indooptik.jdialog.FrameDialog;
 import indooptik.jdialog.LensDialog;
 import indooptik.main.Main;
 import indooptik.utility.SystemID;
+import javax.swing.JButton;
 
 /**
  *
@@ -60,75 +61,82 @@ public class FrameTransactionInternalFrame extends javax.swing.JInternalFrame im
 		exitBtn = new javax.swing.JButton();
 		panel1 = new indooptik.utility.Panel();
 		jPanel1 = new javax.swing.JPanel();
+		jPanel1.setBounds(0, 10, 560, 560);
 		jPanel2 = new javax.swing.JPanel();
+		jPanel2.setBounds(10, 10, 540, 71);
 		jLabel2 = new javax.swing.JLabel();
 		jLabel2.setBounds(12, 13, 75, 15);
 		jLabel25 = new javax.swing.JLabel();
-		jLabel25.setBounds(93, 13, 75, 0);
+		jLabel25.setBounds(93, 13, 75, 15);
 		jLabel26 = new javax.swing.JLabel();
 		jLabel26.setBounds(309, 13, 75, 15);
 		dateLabel = new javax.swing.JLabel();
 		dateLabel.setBounds(390, 13, 75, 15);
 		jPanel3 = new javax.swing.JPanel();
+		jPanel3.setBounds(10, 92, 540, 130);
 		nameTxt = new javax.swing.JTextField();
-		nameTxt.setBounds(97, 13, 426, 20);
+		nameTxt.setBounds(97, 13, 250, 20);
 		jLabel3 = new javax.swing.JLabel();
-		jLabel3.setBounds(12, 15, 75, 15);
+		jLabel3.setBounds(10, 10, 75, 20);
 		jLabel4 = new javax.swing.JLabel();
-		jLabel4.setBounds(12, 44, 75, 15);
+		jLabel4.setBounds(12, 40, 75, 20);
 		phoneTxt = new javax.swing.JTextField();
-		phoneTxt.setBounds(97, 42, 426, 20);
+		phoneTxt.setBounds(97, 42, 250, 20);
 		jLabel6 = new javax.swing.JLabel();
-		jLabel6.setBounds(12, 101, 75, 15);
+		jLabel6.setBounds(12, 100, 75, 20);
 		jLabel7 = new javax.swing.JLabel();
-		jLabel7.setBounds(12, 75, 75, 15);
+		jLabel7.setBounds(12, 70, 75, 20);
 		mobileTxt = new javax.swing.JTextField();
-		mobileTxt.setBounds(97, 73, 426, 20);
+		mobileTxt.setBounds(97, 73, 250, 20);
 		bodTxt = new com.toedter.calendar.JDateChooser();
-		bodTxt.setBounds(97, 101, 95, 20);
+		bodTxt.setBounds(97, 101, 100, 20);
 		jPanel4 = new javax.swing.JPanel();
+		jPanel4.setBounds(10, 233, 540, 170);
 		jLabel8 = new javax.swing.JLabel();
-		jLabel8.setBounds(12, 15, 75, 15);
+		jLabel8.setBounds(10, 10, 75, 20);
 		lensTxt = new javax.swing.JTextField();
-		lensTxt.setBounds(97, 13, 426, 20);
+		lensTxt.setBounds(97, 13, 250, 20);
 		jLabel9 = new javax.swing.JLabel();
-		jLabel9.setBounds(12, 46, 75, 15);
+		jLabel9.setBounds(12, 46, 75, 20);
 		colorTxt = new javax.swing.JTextField();
-		colorTxt.setBounds(97, 44, 426, 20);
+		colorTxt.setBounds(97, 44, 250, 20);
 		jLabel10 = new javax.swing.JLabel();
-		jLabel10.setBounds(12, 77, 75, 15);
+		jLabel10.setBounds(12, 77, 75, 20);
 		jLabel11 = new javax.swing.JLabel();
-		jLabel11.setBounds(215, 77, 35, 15);
+		jLabel11.setBounds(205, 77, 35, 15);
 		jLabel12 = new javax.swing.JLabel();
 		jLabel12.setBounds(378, 77, 35, 15);
 		jLabel13 = new javax.swing.JLabel();
-		jLabel13.setBounds(12, 108, 75, 15);
+		jLabel13.setBounds(12, 108, 75, 20);
 		jLabel14 = new javax.swing.JLabel();
-		jLabel14.setBounds(215, 108, 35, 15);
+		jLabel14.setBounds(205, 108, 35, 15);
 		jLabel15 = new javax.swing.JLabel();
 		jLabel15.setBounds(378, 108, 35, 15);
 		jLabel24 = new javax.swing.JLabel();
-		jLabel24.setBounds(12, 139, 75, 15);
+		jLabel24.setBounds(12, 139, 75, 20);
 		jLabel16 = new javax.swing.JLabel();
-		jLabel16.setBounds(298, 139, 35, 15);
+		jLabel16.setBounds(205, 142, 35, 15);
 		pdTxt = new javax.swing.JTextField();
-		pdTxt.setBounds(337, 137, 76, 20);
+		pdTxt.setBounds(245, 140, 100, 20);
 		jPanel5 = new javax.swing.JPanel();
+		jPanel5.setBounds(10, 414, 540, 160);
 		frameTxt = new javax.swing.JTextField();
-		frameTxt.setBounds(97, 13, 426, 20);
+		frameTxt.setBounds(97, 13, 250, 20);
 		jLabel17 = new javax.swing.JLabel();
-		jLabel17.setBounds(12, 15, 75, 15);
+		jLabel17.setBounds(10, 10, 75, 20);
 		jLabel19 = new javax.swing.JLabel();
-		jLabel19.setBounds(12, 44, 75, 15);
+		jLabel19.setBounds(10, 40, 75, 20);
 		jScrollPane1 = new javax.swing.JScrollPane();
 		jScrollPane1.setBounds(97, 44, 426, 96);
 		descTxt = new javax.swing.JTextArea();
 		jPanel7 = new javax.swing.JPanel();
+		jPanel7.setBounds(580, 0, 370, 600);
 		jPanel6 = new javax.swing.JPanel();
+		jPanel6.setBounds(10, 10, 350, 510);
 		jLabel5 = new javax.swing.JLabel();
-		jLabel5.setBounds(12, 15, 75, 15);
+		jLabel5.setBounds(10, 10, 80, 20);
 		lensPriceTextField = new javax.swing.JTextField();
-		lensPriceTextField.setBounds(130, 13, 200, 20);
+		lensPriceTextField.setBounds(130, 10, 200, 20);
 		
 		lensPriceTextField.getDocument().addDocumentListener(new DocumentListener() {
 			
@@ -149,9 +157,9 @@ public class FrameTransactionInternalFrame extends javax.swing.JInternalFrame im
 		});
 		
 		jLabel18 = new javax.swing.JLabel();
-		jLabel18.setBounds(12, 46, 75, 15);
+		jLabel18.setBounds(10, 40, 80, 20);
 		framePriceTextField = new javax.swing.JTextField();
-		framePriceTextField.setBounds(130, 44, 200, 20);
+		framePriceTextField.setBounds(130, 40, 200, 20);
 		
 		framePriceTextField.getDocument().addDocumentListener(new DocumentListener() {
 			
@@ -172,9 +180,9 @@ public class FrameTransactionInternalFrame extends javax.swing.JInternalFrame im
 		});
 		
 		jLabel20 = new javax.swing.JLabel();
-		jLabel20.setBounds(12, 77, 75, 15);
+		jLabel20.setBounds(10, 70, 80, 20);
 		diskonTextField = new javax.swing.JTextField();
-		diskonTextField.setBounds(130, 75, 200, 20);
+		diskonTextField.setBounds(130, 70, 200, 20);
 		
 		diskonTextField.getDocument().addDocumentListener(new DocumentListener() {
 			
@@ -195,18 +203,18 @@ public class FrameTransactionInternalFrame extends javax.swing.JInternalFrame im
 		});
 		
 		jLabel21 = new javax.swing.JLabel();
-		jLabel21.setBounds(12, 106, 75, 15);
+		jLabel21.setBounds(10, 100, 80, 20);
 		totalBayarTextField = new javax.swing.JTextField();
-		totalBayarTextField.setBounds(130, 106, 200, 20);
+		totalBayarTextField.setBounds(130, 100, 200, 20);
 		
 		jLabel23 = new javax.swing.JLabel();
-		jLabel23.setBounds(22, 471, 75, 15);
+		jLabel23.setBounds(22, 480, 75, 15);
 		sisaTextField = new javax.swing.JTextField();
-		sisaTextField.setBounds(130, 469, 200, 20);
+		sisaTextField.setBounds(130, 480, 200, 20);
 		jLabel1 = new javax.swing.JLabel();
-		jLabel1.setBounds(12, 137, 115, 47);
+		jLabel1.setBounds(12, 130, 100, 50);
 		cashChkbox = new javax.swing.JCheckBox();
-		cashChkbox.setBounds(130, 134, 94, 23);
+		cashChkbox.setBounds(130, 130, 95, 20);
 
 		cashChkbox.addActionListener(new ActionListener() {
 
@@ -222,7 +230,7 @@ public class FrameTransactionInternalFrame extends javax.swing.JInternalFrame im
 		});
 
 		transferChkbox = new javax.swing.JCheckBox();
-		transferChkbox.setBounds(230, 163, 101, 23);
+		transferChkbox.setBounds(235, 160, 95, 20);
 		
 		transferChkbox.addActionListener(new ActionListener() {
 			
@@ -239,7 +247,9 @@ public class FrameTransactionInternalFrame extends javax.swing.JInternalFrame im
 		});
 		
 		jPanel8 = new javax.swing.JPanel();
+		jPanel8.setBounds(10, 530, 350, 45);
 		resetButton = new javax.swing.JButton();
+		resetButton.setBounds(95, 10, 75, 25);
 		
 		resetButton.addActionListener(new ActionListener() {
 			
@@ -250,7 +260,16 @@ public class FrameTransactionInternalFrame extends javax.swing.JInternalFrame im
 		});
 		
 		tundaButton = new javax.swing.JButton();
+		tundaButton.setBounds(180, 10, 75, 25);
 		bayarButton = new javax.swing.JButton();
+		bayarButton.setBounds(265, 10, 75, 25);
+		bayarButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				System.out.println("yahoo");
+			}
+		});
 
 		exitBtn.setMnemonic('k');
 
@@ -431,11 +450,11 @@ public class FrameTransactionInternalFrame extends javax.swing.JInternalFrame im
 
 		JComboBox odSphCmbox = new JComboBox(Main.sph);
 		odSphCmbox.setBounds(97, 75, 100, 20);
-		odSphCmbox.setSelectedIndex(60);
+		odSphCmbox.setSelectedIndex(80);
 
 		JComboBox osSphCmbox = new JComboBox(Main.sph);
 		osSphCmbox.setBounds(97, 106, 100, 20);
-		osSphCmbox.setSelectedIndex(60);
+		osSphCmbox.setSelectedIndex(80);
 
 		/*String[] cly = new String[25]; 
 
@@ -447,10 +466,10 @@ public class FrameTransactionInternalFrame extends javax.swing.JInternalFrame im
 		}*/
 
 		JComboBox odClyCmbox = new JComboBox(Main.cly);
-		odClyCmbox.setBounds(260, 75, 100, 20);
+		odClyCmbox.setBounds(245, 75, 100, 20);
 
 		JComboBox osClyCmbox = new JComboBox(Main.cly);
-		osClyCmbox.setBounds(260, 106, 100, 20);
+		osClyCmbox.setBounds(245, 106, 100, 20);
 
 		/*String[] add = new String[9];
         int b = 75;
@@ -500,32 +519,6 @@ public class FrameTransactionInternalFrame extends javax.swing.JInternalFrame im
 		descTxt.setLineWrap(true);
 		descTxt.setRows(5);
 		jScrollPane1.setViewportView(descTxt);
-
-		javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-		jPanel1Layout.setHorizontalGroup(
-			jPanel1Layout.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-					.addContainerGap()
-					.addGroup(jPanel1Layout.createParallelGroup(Alignment.TRAILING)
-						.addComponent(jPanel2, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 535, Short.MAX_VALUE)
-						.addComponent(jPanel5, GroupLayout.DEFAULT_SIZE, 535, Short.MAX_VALUE)
-						.addComponent(jPanel4, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(jPanel3, GroupLayout.DEFAULT_SIZE, 535, Short.MAX_VALUE))
-					.addContainerGap())
-		);
-		jPanel1Layout.setVerticalGroup(
-			jPanel1Layout.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(jPanel2, GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(jPanel3, GroupLayout.PREFERRED_SIZE, 131, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(jPanel4, GroupLayout.PREFERRED_SIZE, 171, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(jPanel5, GroupLayout.PREFERRED_SIZE, 157, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap())
-		);
 		jPanel2.setLayout(null);
 		jPanel2.add(jLabel2);
 		jPanel2.add(jLabel25);
@@ -545,7 +538,6 @@ public class FrameTransactionInternalFrame extends javax.swing.JInternalFrame im
 		jPanel3.add(jLabel7);
 		jPanel3.add(phoneTxt);
 		jPanel3.add(mobileTxt);
-		jPanel1.setLayout(jPanel1Layout);
 		jPanel4.setLayout(null);
 		jPanel4.add(jLabel8);
 		jPanel4.add(lensTxt);
@@ -608,7 +600,7 @@ public class FrameTransactionInternalFrame extends javax.swing.JInternalFrame im
 		transferChkbox.setText("Transfer");
 
 		final JCheckBox instansiChkbox = new JCheckBox();
-		instansiChkbox.setBounds(230, 134, 101, 23);
+		instansiChkbox.setBounds(235, 130, 95, 20);
 		instansiChkbox.setText("Instansi");
 		
 		instansiChkbox.addActionListener(new ActionListener() {
@@ -628,10 +620,10 @@ public class FrameTransactionInternalFrame extends javax.swing.JInternalFrame im
 			}
 		});
 
-		String[] kartu = {"","DEBIT","KREDIT"};
+		String[] kartu = {"Pilih","DEBIT","KREDIT"};
 		final JComboBox kartuCmbox = new JComboBox(kartu);
 		kartuCmbox.setSelectedIndex(0);
-		kartuCmbox.setBounds(130, 164, 94, 20);
+		kartuCmbox.setBounds(130, 160, 95, 20);
 
 
 		kartuCmbox.addActionListener(new ActionListener() {
@@ -662,50 +654,6 @@ public class FrameTransactionInternalFrame extends javax.swing.JInternalFrame im
 		tundaButton.setText("Tunda");
 
 		bayarButton.setText("Bayar");
-
-		javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
-		jPanel8.setLayout(jPanel8Layout);
-		jPanel8Layout.setHorizontalGroup(
-				jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-				.addGroup(jPanel8Layout.createSequentialGroup()
-						.addGap(98, 98, 98)
-						.addComponent(resetButton)
-						.addGap(18, 18, 18)
-						.addComponent(tundaButton)
-						.addGap(18, 18, 18)
-						.addComponent(bayarButton)
-						.addContainerGap(20, Short.MAX_VALUE))
-				);
-		jPanel8Layout.setVerticalGroup(
-				jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-				.addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
-						.addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-								.addComponent(resetButton)
-								.addComponent(tundaButton)
-								.addComponent(bayarButton))
-						.addContainerGap())
-				);
-
-		javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-		jPanel7Layout.setHorizontalGroup(
-				jPanel7Layout.createParallelGroup(Alignment.TRAILING)
-				.addGroup(jPanel7Layout.createSequentialGroup()
-						.addContainerGap()
-						.addGroup(jPanel7Layout.createParallelGroup(Alignment.TRAILING)
-								.addComponent(jPanel6, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addComponent(jPanel8, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 349, Short.MAX_VALUE))
-						.addContainerGap())
-				);
-		jPanel7Layout.setVerticalGroup(
-				jPanel7Layout.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-						.addContainerGap()
-						.addComponent(jPanel6, GroupLayout.DEFAULT_SIZE, 498, Short.MAX_VALUE)
-						.addPreferredGap(ComponentPlacement.RELATED)
-						.addComponent(jPanel8, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addContainerGap())
-				);
 		jPanel6.setLayout(null);
 		jPanel6.add(jLabel5);
 		jPanel6.add(lensPriceTextField);
@@ -726,12 +674,12 @@ public class FrameTransactionInternalFrame extends javax.swing.JInternalFrame im
 		JPanel cashPanel = new JPanel();
 		cashPanel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, Color.WHITE, null));
 		cashPanel.setForeground(Color.WHITE);
-		cashPanel.setBounds(12, 198, 327, 40);
+		cashPanel.setBounds(10, 190, 327, 40);
 		cashPanel.setOpaque(false);
 		jPanel6.add(cashPanel);
 		cashPanel.setLayout(null);
 		jLabel28 = new javax.swing.JLabel();
-		jLabel28.setBounds(10, 11, 97, 15);
+		jLabel28.setBounds(10, 10, 90, 20);
 		cashPanel.add(jLabel28);
 
 		jLabel28.setFont(new Font("Tahoma", Font.BOLD, 12)); // NOI18N
@@ -764,12 +712,12 @@ public class FrameTransactionInternalFrame extends javax.swing.JInternalFrame im
 
 		kartuPanel = new JPanel();
 		kartuPanel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
-		kartuPanel.setBounds(12, 243, 327, 97);
+		kartuPanel.setBounds(10, 240, 327, 100);
 		kartuPanel.setOpaque(false);
 		jPanel6.add(kartuPanel);
 		kartuPanel.setLayout(null);
 		jLabel29 = new javax.swing.JLabel();
-		jLabel29.setBounds(10, 11, 97, 20);
+		jLabel29.setBounds(10, 10, 90, 20);
 		kartuPanel.add(jLabel29);
 
 		jLabel29.setFont(new Font("Tahoma", Font.BOLD, 12)); // NOI18N
@@ -781,7 +729,7 @@ public class FrameTransactionInternalFrame extends javax.swing.JInternalFrame im
 		noKartuTextField.setEditable(false);
 		kartuPanel.add(noKartuTextField);
 		jLabel30 = new javax.swing.JLabel();
-		jLabel30.setBounds(8, 37, 99, 20);
+		jLabel30.setBounds(10, 40, 90, 20);
 		kartuPanel.add(jLabel30);
 
 		jLabel30.setFont(new Font("Tahoma", Font.BOLD, 12)); // NOI18N
@@ -817,7 +765,7 @@ public class FrameTransactionInternalFrame extends javax.swing.JInternalFrame im
 		kartuPanel.add(dpKartuTextField);
 
 		JLabel lblDpKartu = new JLabel();
-		lblDpKartu.setBounds(8, 68, 99, 20);
+		lblDpKartu.setBounds(10, 70, 90, 20);
 		kartuPanel.add(lblDpKartu);
 		lblDpKartu.setText("Dp Kartu");
 		lblDpKartu.setForeground(Color.WHITE);
@@ -825,13 +773,13 @@ public class FrameTransactionInternalFrame extends javax.swing.JInternalFrame im
 
 		instansiLabel = new JPanel();
 		instansiLabel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
-		instansiLabel.setBounds(12, 344, 327, 65);
+		instansiLabel.setBounds(10, 350, 327, 70);
 		instansiLabel.setOpaque(false);
 		jPanel6.add(instansiLabel);
 		instansiLabel.setLayout(null);
 
 		JLabel lblNoLegalisasi = new JLabel();
-		lblNoLegalisasi.setBounds(10, 12, 97, 15);
+		lblNoLegalisasi.setBounds(10, 10, 90, 20);
 		instansiLabel.add(lblNoLegalisasi);
 		lblNoLegalisasi.setText("No. Legalisasi");
 		lblNoLegalisasi.setForeground(Color.WHITE);
@@ -864,7 +812,7 @@ public class FrameTransactionInternalFrame extends javax.swing.JInternalFrame im
 		
 		instansiLabel.add(dpInstansiTextField);
 		jLabel22 = new javax.swing.JLabel();
-		jLabel22.setBounds(10, 38, 97, 15);
+		jLabel22.setBounds(10, 40, 90, 20);
 		instansiLabel.add(jLabel22);
 
 		jLabel22.setFont(new Font("Tahoma", Font.BOLD, 12)); // NOI18N
@@ -874,13 +822,13 @@ public class FrameTransactionInternalFrame extends javax.swing.JInternalFrame im
 
 		transferPanel = new JPanel();
 		transferPanel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
-		transferPanel.setBounds(12, 415, 327, 38);
+		transferPanel.setBounds(10, 430, 327, 40);
 		transferPanel.setOpaque(false);
 		jPanel6.add(transferPanel);
 		transferPanel.setLayout(null);
 
 		JLabel transferLbl = new JLabel();
-		transferLbl.setBounds(10, 10, 75, 15);
+		transferLbl.setBounds(10, 10, 90, 20);
 		transferPanel.add(transferLbl);
 		transferLbl.setText("Transfer");
 		transferLbl.setPreferredSize(new Dimension(75, 15));
@@ -909,30 +857,31 @@ public class FrameTransactionInternalFrame extends javax.swing.JInternalFrame im
 		});
 		
 		transferPanel.add(dpTransferTextField);
-		jPanel7.setLayout(jPanel7Layout);
+		jPanel7.setLayout(null);
+		jPanel7.setBounds(580, 10, 370, 585);
+		jPanel7.add(jPanel6);
+		jPanel7.add(jPanel8);
+		jPanel8.setLayout(null);
+		jPanel8.add(resetButton);
+		jPanel8.add(tundaButton);
+		jPanel8.add(bayarButton);
+		
+		JButton newButton = new JButton();
+		newButton.setText("Baru");
+		newButton.setBounds(10, 10, 75, 25);
+		jPanel8.add(newButton);
+		jPanel1.setLayout(null);
+		jPanel1.setBounds(10, 10, 560, 585);
+		jPanel1.add(jPanel2);
+		jPanel1.add(jPanel5);
+		jPanel1.add(jPanel4);
+		jPanel1.add(jPanel3);
 
-		javax.swing.GroupLayout panel1Layout = new javax.swing.GroupLayout(panel1);
-		panel1.setLayout(panel1Layout);
-		panel1Layout.setHorizontalGroup(
-				panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-				.addGroup(panel1Layout.createSequentialGroup()
-						.addContainerGap()
-						.addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-						.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-						.addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addContainerGap())
-				);
-		panel1Layout.setVerticalGroup(
-				panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-				.addGroup(panel1Layout.createSequentialGroup()
-						.addContainerGap()
-						.addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-								.addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-						.addContainerGap())
-				);
-
-		getContentPane().add(panel1, java.awt.BorderLayout.CENTER);
+		getContentPane().add(panel1, null);
+		panel1.setLayout(null);
+		panel1.setSize(950,605);
+		panel1.add(jPanel1);
+		panel1.add(jPanel7);
 
 		pack();
 	}// </editor-fold>//GEN-END:initComponents
@@ -954,6 +903,8 @@ public class FrameTransactionInternalFrame extends javax.swing.JInternalFrame im
 		int dpInstansi = 0;
 		int dpTransfer = 0;
 		int sisa = 0;
+		
+		System.out.println();
 		
 		if (!"".equals(lensPriceTextField.getText())) lens = Integer.parseInt(lensPriceTextField.getText());
 		else lens = 0;

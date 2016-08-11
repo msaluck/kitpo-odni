@@ -17,11 +17,18 @@ import indooptik.internalframe.DisplayTableInternalFrame;
 import indooptik.internalframe.FrameInternalFrame;
 import indooptik.internalframe.FrameTransactionInternalFrame;
 import indooptik.internalframe.LensInternalFrame;
+import indooptik.internalframe.OrderInternalFrame;
 import indooptik.internalframe.ProductInternalFrame;
 import indooptik.internalframe.UserInfoInternalFrame;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.beans.PropertyVetoException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
 
 /**
  *
@@ -33,9 +40,11 @@ public class MainFrame extends javax.swing.JFrame {
     DisplayTableInternalFrame displayTableInternalFrame = new DisplayTableInternalFrame();
     LensInternalFrame lensInternalFrame = new LensInternalFrame();
     FrameInternalFrame frameInternalFrame = new FrameInternalFrame();
-    private FrameTransactionInternalFrame frameTransactionInternalFrame = new FrameTransactionInternalFrame();
+    FrameTransactionInternalFrame frameTransactionInternalFrame = new FrameTransactionInternalFrame();
     CustomerInternalFrame customerInternalFrame = new CustomerInternalFrame();
     ProductInternalFrame productInternalFrame = new ProductInternalFrame();
+    OrderInternalFrame orderInternalFrame = new OrderInternalFrame();
+    
     /**
      * Creates new form MainFrame
      */
@@ -64,6 +73,8 @@ public class MainFrame extends javax.swing.JFrame {
         lensMenuItem = new javax.swing.JMenuItem();
         stockFrameMenuItem = new javax.swing.JMenuItem();
         stockProdukMenuItem = new javax.swing.JMenuItem();
+        orderMenu = new JMenu();
+        orderLensMenuItem = new JMenuItem();
         customerMenu = new javax.swing.JMenu();
         customerItem = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
@@ -141,7 +152,22 @@ public class MainFrame extends javax.swing.JFrame {
         stockMenu.add(stockProdukMenuItem);
 
         jMenuBar1.add(stockMenu);
+        
+        orderMenu.setText("Order");
+        orderLensMenuItem.setText("Order Lensa");
+        
+        orderMenu.add(orderLensMenuItem);
+        
+        orderLensMenuItem.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent evt) {
+				orderLensActionPerformed(evt);
+			}
+		});
 
+        jMenuBar1.add(orderMenu);
+        
         customerMenu.setText("Customer");
 
         customerItem.setText("Customer");
@@ -179,7 +205,32 @@ public class MainFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void exitMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuItemActionPerformed
+    protected void orderLensActionPerformed(ActionEvent evt) {
+		if (evt.getSource() == orderLensMenuItem) {
+			if (!orderInternalFrame.isVisible()) {
+				getjDesktopPane1().add(orderInternalFrame);
+                orderInternalFrame.setVisible(true);
+                orderInternalFrame.setLocation(10, 10);
+                //FrameTransactionController frameTransactionController = new FrameTransactionController(getFrameTransactionInternalFrame());
+                //getFrameTransactionInternalFrame().setFrameTransactionController(frameTransactionController);
+			}
+			
+			//getFrameTransactionInternalFrame().moveToFront();
+            /*try {
+                getFrameTransactionInternalFrame().setSelected(true);
+            } catch (PropertyVetoException ex) {
+                Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }*/   
+		} else {
+            /*try {
+                getFrameTransactionInternalFrame().setSelected(true);
+            } catch (PropertyVetoException ex) {
+                Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }*/
+        }
+	}
+
+	private void exitMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuItemActionPerformed
         System.exit(0);
     }//GEN-LAST:event_exitMenuItemActionPerformed
 
@@ -308,7 +359,7 @@ public class MainFrame extends javax.swing.JFrame {
                 Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-    }//GEN-LAST:event_stockFrameMenuItemActionPerformed
+    }
 
     private void customerItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_customerItemActionPerformed
         if (evt.getSource() == customerItem) {
@@ -332,7 +383,7 @@ public class MainFrame extends javax.swing.JFrame {
                 Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-    }//GEN-LAST:event_customerItemActionPerformed
+    }
 
     private void stockProdukMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stockProdukMenuItemActionPerformed
         if (evt.getSource() == stockProdukMenuItem) {
@@ -356,10 +407,10 @@ public class MainFrame extends javax.swing.JFrame {
                 Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-    }//GEN-LAST:event_stockProdukMenuItemActionPerformed
+    }
 
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+    
     private javax.swing.JMenuItem customerItem;
     private javax.swing.JMenu customerMenu;
     private javax.swing.JMenuItem displayTableMenuItem;
@@ -377,7 +428,8 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JMenu stockMenu;
     private javax.swing.JMenuItem stockProdukMenuItem;
     private javax.swing.JMenuItem userInfoMenuItem;
-    // End of variables declaration//GEN-END:variables
+    private JMenu orderMenu;
+    private JMenuItem orderLensMenuItem;
 
     /**
      * @return the frameTransactionInternalFrame

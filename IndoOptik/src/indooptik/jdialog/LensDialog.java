@@ -229,7 +229,7 @@ public class LensDialog extends javax.swing.JDialog implements DocumentListener{
     public void setData(Lens lens){
         frameTransactionInternalFrame.getLensTxt().setText(lens.getMaterialLens()+"/"+lens.getType()+"/"+lens.getColor());
         frameTransactionInternalFrame.getColorTxt().setText(lens.getColor());
-        frameTransactionInternalFrame.getLensPriceTxt().setText("" + lens.getPrice());
+        frameTransactionInternalFrame.getLensPriceTxt().setText(""+lens.getPrice().intValue());
     }
 
     @Override

@@ -44,7 +44,9 @@ public class DAOFactory {
             }
 
             //tentukan driver jdbc yang digunakan
-            Class.forName("com.mysql.jdbc.Driver");
+            //org.hsqldb.jdbc.JDBCDriver
+            Class.forName("org.hsqldb.jdbc.JDBCDriver");
+            //Class.forName("com.mysql.jdbc.Driver");
             //tentukan koneksi url yang digunakan
             //String url = "jdbc:mysql://localhost:3306/sis";
             String url = properties.getProperty("url");
@@ -52,7 +54,7 @@ public class DAOFactory {
             String password = properties.getProperty("password");
 
             //buat objek koneksi
-            connection = DriverManager.getConnection(url, "root", "");
+            connection = DriverManager.getConnection(url, username, password);
             System.out.println(username + connection);
 
         } catch (SQLException ex) {

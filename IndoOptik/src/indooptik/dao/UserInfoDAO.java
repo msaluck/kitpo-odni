@@ -55,7 +55,7 @@ public class UserInfoDAO{
         PreparedStatement statement = null;
         UserInfo userInfo = new UserInfo();
         try {
-            statement = (PreparedStatement) connection.prepareStatement(sql);
+            statement = (PreparedStatement) connection.prepareStatement(sql,ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
             rs = statement.executeQuery();
             if (rs.first()) {
                 userInfo.setId(rs.getInt(1));
