@@ -10,17 +10,23 @@ import indooptik.model.Product;
 import indooptik.model.ProductTransactionDetail;
 import indooptik.utility.NumberField;
 import indooptik.utility.Panel;
+
 import javax.swing.JLabel;
+
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Vector;
 import java.awt.Color;
 import java.awt.Dimension;
+
 import javax.swing.JTextField;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
@@ -28,6 +34,7 @@ import javax.swing.border.EtchedBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JTable;
 import javax.swing.JButton;
+
 import com.toedter.calendar.JDateChooser;
 
 public class ProductTransactionInternalFrame extends JInternalFrame{
@@ -62,9 +69,14 @@ public class ProductTransactionInternalFrame extends JInternalFrame{
 	private JTextField textField_2;
 	private JLabel transactionDateField;
 	private JLabel transactionIdField;
+	private Map<String, ProductTransactionDetail> productTransactionDetailMap; 
 
 	public void setProductTransactionController(ProductTransactionController productTransactionController) {
 		this.productTransactionController = productTransactionController;
+	}
+
+	public ProductTransactionController getProductTransactionController() {
+		return productTransactionController;
 	}
 
 	/**
@@ -83,14 +95,6 @@ public class ProductTransactionInternalFrame extends JInternalFrame{
 		leftPanel.setLayout(null);
 
 		panel.add(leftPanel);
-
-		if (productTransactionTbl.getColumnModel().getColumnCount() > 0) {
-			productTransactionTbl.getColumnModel().getColumn(0).setPreferredWidth(25);
-			productTransactionTbl.getColumnModel().getColumn(1).setPreferredWidth(250);
-			productTransactionTbl.getColumnModel().getColumn(2).setPreferredWidth(25);
-			productTransactionTbl.getColumnModel().getColumn(3).setPreferredWidth(50);
-			productTransactionTbl.getColumnModel().getColumn(4).setPreferredWidth(50);
-		}
 
 		JPanel topPanel = new JPanel();
 		topPanel.setBounds(10, 10, 540, 175);
@@ -213,30 +217,26 @@ public class ProductTransactionInternalFrame extends JInternalFrame{
 
 		productTransactionTbl.setModel(new DefaultTableModel(
 				new Object [][] {},
-				new String [] {
-						"No", "Nama Barang", "Qty", "Harga Satuan", "Harga Total"
-				}
-				) {
+				new String [] {"Nama Barang", "Qty", "Harga Satuan", "Harga Total"}) {
+			
 			Class[] types = new Class [] {
-					java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class
-			};
-			boolean[] canEdit = new boolean [] {
-					false, false, false, false, false
+					java.lang.String.class, java.lang.Integer.class, BigDecimal.class, BigDecimal.class
 			};
 
 			public Class getColumnClass(int columnIndex) {
 				return types [columnIndex];
 			}
-
-			public boolean isCellEditable(int rowIndex, int columnIndex) {
-				return canEdit [columnIndex];
-			}
-
-			public int getRowCount() {
-				return transactionDetails == null ? 0 : transactionDetails.size();};
 		}
 				);
-		jScrollPane.setBounds(10, 51, 500, 30);
+
+		if (productTransactionTbl.getColumnModel().getColumnCount() > 0) {
+			productTransactionTbl.getColumnModel().getColumn(0).setPreferredWidth(250);
+			productTransactionTbl.getColumnModel().getColumn(1).setPreferredWidth(25);
+			productTransactionTbl.getColumnModel().getColumn(2).setPreferredWidth(50);
+			productTransactionTbl.getColumnModel().getColumn(3).setPreferredWidth(50);
+		}
+
+		jScrollPane.setBounds(10, 51, 520, 250);
 		downPanel.add(jScrollPane);
 		jScrollPane.setViewportView(productTransactionTbl);
 
@@ -244,7 +244,7 @@ public class ProductTransactionInternalFrame extends JInternalFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				inputProduct(inputField.getText());
+				inputProduct(inputField.getText(), qtyField.getText());
 			}
 		});
 
@@ -509,15 +509,17 @@ public class ProductTransactionInternalFrame extends JInternalFrame{
 		panel.setLayout(null);
 		panel.setSize(950,605);
 		getContentPane().add(panel, null);
-		
+
 		initTransaction();
 	}
 
 	private void initTransaction() {
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-		
+
 		transactionIdField.setText("S0000001");
 		transactionDateField.setText(sdf.format(new Date()));
+
+		productTransactionDetailMap = new HashMap<String, ProductTransactionDetail>();
 	}
 
 	protected void transferMode() {
@@ -544,13 +546,41 @@ public class ProductTransactionInternalFrame extends JInternalFrame{
 		}
 	}
 
-	protected void inputProduct(String text) {
-		List<Product> products = new ArrayList<>();
+	protected void inputProduct(String barcode, String qty) {
+		Map<String, Product> productMap = getProductTransactionController().getProductMap();
 
-		List<ProductTransactionDetail> transactionDetails = new ArrayList<>();
-		for (ProductTransactionDetail productTransactionDetail : transactionDetails) {
+		Product product = productMap.get(barcode);
+
+		if (!productTransactionDetailMap.containsKey(product.getBarcode())){
+
+			ProductTransactionDetail productTransactionDetail = new ProductTransactionDetail();
+			productTransactionDetail.setId(0);
+			productTransactionDetail.setIdProductTransaction("X");
+			productTransactionDetail.setIdProduct(product.getId());
+			productTransactionDetail.setProductName(product.getName());
+			productTransactionDetail.setQty(qty==null ? 1 : Integer.parseInt(qty));
+			productTransactionDetail.setPrice(product.getPrice());
+			productTransactionDetail.setAmount(new BigDecimal(productTransactionDetail.getQty()).multiply(product.getPrice()));
+
+			productTransactionDetailMap.put(product.getBarcode(), productTransactionDetail);
+		} else {
+			
+			productTransactionDetailMap.get(product.getBarcode()).setQty(productTransactionDetailMap.get(product.getBarcode()).getQty() + (qty==null? 1 : Integer.parseInt(qty)));
+			productTransactionDetailMap.get(product.getBarcode()).setAmount(new BigDecimal(productTransactionDetailMap.get(product.getBarcode()).getQty()).multiply(product.getPrice()));
+			
+		}
+
+		((DefaultTableModel) productTransactionTbl.getModel()).setRowCount(productTransactionDetailMap.values().size());
+
+		for (ProductTransactionDetail transactionDetail : productTransactionDetailMap.values()) {
+			System.out.println(transactionDetail);
+			
 			Vector vector = new Vector<>();
-
+			vector.add(transactionDetail.getProductName());
+			vector.add(transactionDetail.getQty());
+			vector.add(transactionDetail.getPrice());
+			vector.add(transactionDetail.getAmount());
+			((DefaultTableModel) productTransactionTbl.getModel()).addRow(vector);
 		}
 	}
 

@@ -38,6 +38,7 @@ import javax.swing.JMenuItem;
  */
 public class MainFrame extends javax.swing.JFrame {
 
+	private static final long serialVersionUID = -4197504246480195192L;
 	UserInfoInternalFrame userInfoInternalFrame = new UserInfoInternalFrame();
 	DisplayTableInternalFrame displayTableInternalFrame = new DisplayTableInternalFrame();
 	LensInternalFrame lensInternalFrame = new LensInternalFrame();
@@ -268,15 +269,11 @@ public class MainFrame extends javax.swing.JFrame {
 
 	private void productMenuItemActionPerformed(ActionEvent evt) {
 		if (evt.getSource() == productMenuItem) {
-			System.out.println("A");
-			System.out.println(getProductTransactionInternalFrame().isVisible());
-			getjDesktopPane1().add(getProductTransactionInternalFrame());
-			getProductTransactionInternalFrame().setVisible(true);
 			if (!getProductTransactionInternalFrame().isVisible()) {
-				System.out.println("AB");
 				getjDesktopPane1().add(getProductTransactionInternalFrame());
 				getProductTransactionInternalFrame().setVisible(true);
 				getProductTransactionInternalFrame().setLocation(10, 10);
+				System.out.println("MASUK KE SINI NGGA BROh?");
 				ProductTransactionController productTransactionController = new ProductTransactionController(getProductTransactionInternalFrame());
 				getProductTransactionInternalFrame().setProductTransactionController(productTransactionController);
 			}

@@ -15,10 +15,11 @@ public class ProductTransactionDetail {
     private int id;
     private String idProductTransaction;
     private int idProduct;
+    private String productName;
     private int qty;
-    private BigDecimal price = new BigDecimal(0.0);
-    private BigDecimal amount = new BigDecimal(0.0);
-    private BigDecimal discount = new BigDecimal(0.0);
+    private BigDecimal price = BigDecimal.ZERO;
+    private BigDecimal amount = BigDecimal.ZERO;
+    private BigDecimal discount = BigDecimal.ZERO;
 
     /**
      * @return the id
@@ -62,7 +63,15 @@ public class ProductTransactionDetail {
         this.idProduct = idProduct;
     }
 
-    /**
+    public String getProductName() {
+		return productName;
+	}
+
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}
+
+	/**
      * @return the qty
      */
     public int getQty() {
@@ -117,4 +126,11 @@ public class ProductTransactionDetail {
     public void setDiscount(BigDecimal discount) {
         this.discount = discount;
     }
+
+	@Override
+	public String toString() {
+		return "ProductTransactionDetail [id=" + id + ", idProductTransaction=" + idProductTransaction + ", idProduct="
+				+ idProduct + ", productName=" + productName + ", qty=" + qty + ", price=" + price + ", amount="
+				+ amount + ", discount=" + discount + "]";
+	}
 }

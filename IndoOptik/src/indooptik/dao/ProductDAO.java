@@ -30,7 +30,7 @@ public class ProductDAO {
     }
     
     public List<Product> retreiveALL() {
-        String sql = "SELECT id, barcode, name, type, color,minus, price, stock, created_date FROM product ORDER BY name";
+        String sql = "SELECT id, barcode, name, type, color, minus, price, stock, created_date FROM product ORDER BY name";
         PreparedStatement statement = null;
         List<Product> listprProducts = new ArrayList<>();
         try {
