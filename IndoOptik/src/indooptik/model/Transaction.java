@@ -13,7 +13,7 @@ import java.util.Date;
  */
 public class Transaction {
     private String idTransaction;
-    private int idCostumer;
+    private String idCostumer;
     private int idLens;
     private int idFrame;
     private String name;
@@ -25,18 +25,19 @@ public class Transaction {
     private String lensColor;
     private String frame;
     private String desc;
+    private String pd;
 
     /**
      * @return the idCostumer
      */
-    public int getIdCostumer() {
+    public String getIdCostumer() {
         return idCostumer;
     }
 
     /**
      * @param idCostumer the idCostumer to set
      */
-    public void setIdCostumer(int idCostumer) {
+    public void setIdCostumer(String idCostumer) {
         this.idCostumer = idCostumer;
     }
 
@@ -207,6 +208,13 @@ public class Transaction {
     public void setIdTransaction(String idTransaction) {
         this.idTransaction = idTransaction;
     }
-    
+
+	public String getPd() {
+		return pd;
+	}
+
+	public void setPd(String pd) {
+		this.pd = pd;
+	}    
     
 }

@@ -5,14 +5,6 @@
  */
 package indooptik.jdialog;
 
-import indooptik.controller.CustomerController;
-import indooptik.dao.CustomerDAO;
-import indooptik.dao.DAOFactory;
-import indooptik.dao.FrameDAO;
-import indooptik.internalframe.FrameTransactionInternalFrame;
-import indooptik.model.Customer;
-import indooptik.model.Frame;
-import java.math.BigDecimal;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -20,6 +12,7 @@ import java.util.List;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import javax.swing.JInternalFrame;
 import javax.swing.JTable;
 import javax.swing.RowFilter;
@@ -27,6 +20,12 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
+
+import indooptik.controller.CustomerController;
+import indooptik.dao.CustomerDAO;
+import indooptik.dao.DAOFactory;
+import indooptik.internalframe.FrameTransactionInternalFrame;
+import indooptik.model.Customer;
 
 /**
  *
@@ -245,9 +244,11 @@ public class CustomerDialog extends javax.swing.JDialog implements DocumentListe
     
     public void setData(Customer customer){
         frameTransactionInternalFrame.getNameTxt().setText(customer.getName());
+        frameTransactionInternalFrame.setName("");
         frameTransactionInternalFrame.getPhoneTxt().setText(customer.getTelp());
         frameTransactionInternalFrame.getMobileTxt().setText(customer.getHp());
         frameTransactionInternalFrame.getBodTxt().setDate(customer.getHut());
+        frameTransactionInternalFrame.setCustomerId(customer.getIdCustomer());
     }
     
     @Override

@@ -5,10 +5,10 @@
  */
 package indooptik.internalframe;
 
-import indooptik.controller.FrameController;
-import indooptik.controller.LensController;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
+
+import indooptik.controller.FrameController;
 
 /**
  *
@@ -69,7 +69,7 @@ public class FrameInternalFrame extends javax.swing.JInternalFrame implements Do
         setBorder(javax.swing.BorderFactory.createEtchedBorder());
         setClosable(true);
         setIconifiable(true);
-        setTitle("Frame");
+        setTitle("Stok Frame");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel1.setOpaque(false);
@@ -131,11 +131,13 @@ public class FrameInternalFrame extends javax.swing.JInternalFrame implements Do
                 return canEdit [columnIndex];
             }
         });
+        
         frameTabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 frameTabelMousePressed(evt);
             }
         });
+        
         jScrollPane1.setViewportView(frameTabel);
         if (frameTabel.getColumnModel().getColumnCount() > 0) {
             frameTabel.getColumnModel().getColumn(0).setMinWidth(0);

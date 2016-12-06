@@ -235,6 +235,7 @@ public class FrameDialog extends javax.swing.JDialog implements DocumentListener
     public void setData(Frame frame){
         frameTransactionInternalFrame.getFrameTxt().setText(frame.getMerk()+"/"+frame.getFrameType()+"/"+frame.getColor()+"/"+frame.getIdDisplayTable()+"/"+frame.getSeqNumber());
         frameTransactionInternalFrame.getFramePriceTxt().setText(""+frame.getPrice());
+        frameTransactionInternalFrame.setFrameId(frame.getIdFrame());
     }
     
     @Override

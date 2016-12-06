@@ -5,14 +5,10 @@
  */
 package indooptik.jdialog;
 
-import indooptik.dao.DAOFactory;
-import indooptik.dao.LensDAO;
-import indooptik.internalframe.FrameTransactionInternalFrame;
-import indooptik.internalframe.LensInternalFrame;
-import indooptik.model.Lens;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Vector;
+
 import javax.swing.JInternalFrame;
 import javax.swing.JTable;
 import javax.swing.RowFilter;
@@ -20,6 +16,11 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
+
+import indooptik.dao.DAOFactory;
+import indooptik.dao.LensDAO;
+import indooptik.internalframe.FrameTransactionInternalFrame;
+import indooptik.model.Lens;
 
 /**
  *
@@ -74,21 +75,21 @@ public class LensDialog extends javax.swing.JDialog implements DocumentListener{
         jLabel1.setText("Cari");
 
         lensTbl.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
-            },
-            new String [] {
-                "Id", "Material Lensa", "Tipe Lensa", "Warna Lensa", "Harga"
-            }
+        		new Object [][] {
+                    {null, null, null, null, null, null, null, null, null, null},
+                    {null, null, null, null, null, null, null, null, null, null},
+                    {null, null, null, null, null, null, null, null, null, null},
+                    {null, null, null, null, null, null, null, null, null, null}
+                },
+                new String [] {
+                    "Id", "Jenis Bahan", "Tipe Lensa", "Warna Lensa", "Harga Lensa", "Sph", "Cyl", "Add", "Merk", "Stock"
+                }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class
+            		java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+            		false, false, false, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -101,16 +102,20 @@ public class LensDialog extends javax.swing.JDialog implements DocumentListener{
         });
         jScrollPane1.setViewportView(lensTbl);
         if (lensTbl.getColumnModel().getColumnCount() > 0) {
-            lensTbl.getColumnModel().getColumn(0).setMinWidth(0);
+        	lensTbl.getColumnModel().getColumn(0).setMinWidth(0);
             lensTbl.getColumnModel().getColumn(0).setMaxWidth(0);
-            lensTbl.getColumnModel().getColumn(1).setMinWidth(85);
-            lensTbl.getColumnModel().getColumn(1).setMaxWidth(85);
-            lensTbl.getColumnModel().getColumn(2).setMinWidth(110);
-            lensTbl.getColumnModel().getColumn(2).setMaxWidth(110);
             lensTbl.getColumnModel().getColumn(3).setMinWidth(110);
             lensTbl.getColumnModel().getColumn(3).setMaxWidth(110);
             lensTbl.getColumnModel().getColumn(4).setMinWidth(0);
             lensTbl.getColumnModel().getColumn(4).setMaxWidth(0);
+            lensTbl.getColumnModel().getColumn(5).setMinWidth(50);
+            lensTbl.getColumnModel().getColumn(5).setMaxWidth(50);
+            lensTbl.getColumnModel().getColumn(6).setMinWidth(50);
+            lensTbl.getColumnModel().getColumn(6).setMaxWidth(50);
+            lensTbl.getColumnModel().getColumn(7).setMinWidth(50);
+            lensTbl.getColumnModel().getColumn(7).setMaxWidth(50);
+            lensTbl.getColumnModel().getColumn(9).setMinWidth(40);
+            lensTbl.getColumnModel().getColumn(9).setMaxWidth(40);
         }
 
         jButton2.setText("Pilih");
@@ -173,14 +178,13 @@ public class LensDialog extends javax.swing.JDialog implements DocumentListener{
         getContentPane().add(panel1, java.awt.BorderLayout.CENTER);
 
         pack();
-    }// </editor-fold>//GEN-END:initComponents
+    }
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         chooseData();
         dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
@@ -188,9 +192,6 @@ public class LensDialog extends javax.swing.JDialog implements DocumentListener{
     private javax.swing.JTable lensTbl;
     private indooptik.utility.Panel panel1;
     private javax.swing.JTextField searchTxt;
-    // End of variables declaration//GEN-END:variables
-
-    
 
     void showData(){
         List<Lens> listLens = lensDAO.retreiveALL();
@@ -230,6 +231,7 @@ public class LensDialog extends javax.swing.JDialog implements DocumentListener{
         frameTransactionInternalFrame.getLensTxt().setText(lens.getMaterialLens()+"/"+lens.getType()+"/"+lens.getColor());
         frameTransactionInternalFrame.getColorTxt().setText(lens.getColor());
         frameTransactionInternalFrame.getLensPriceTxt().setText(""+lens.getPrice().intValue());
+        frameTransactionInternalFrame.setLensId(lens.getIdLens());
     }
 
     @Override

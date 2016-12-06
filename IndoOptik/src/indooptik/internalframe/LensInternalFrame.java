@@ -5,10 +5,10 @@
  */
 package indooptik.internalframe;
 
-import indooptik.controller.DisplayTableController;
-import indooptik.controller.LensController;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
+
+import indooptik.controller.LensController;
 
 /**
  *
@@ -68,7 +68,7 @@ public class LensInternalFrame extends javax.swing.JInternalFrame implements Doc
         setBorder(javax.swing.BorderFactory.createEtchedBorder());
         setClosable(true);
         setIconifiable(true);
-        setTitle("Lensa");
+        setTitle("Stok Lensa");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel1.setOpaque(false);

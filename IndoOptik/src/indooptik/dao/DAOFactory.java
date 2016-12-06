@@ -72,6 +72,7 @@ public class DAOFactory {
     private PaymentProviderDAO paymentProviderDAO;
     private PaymentMethodDAO paymentMethodDAO;
     private ProductDAO productDAO;
+    private TransactionDAO transactionDAO;
 
     /**
      * @return the userInfoDAO
@@ -153,4 +154,12 @@ public class DAOFactory {
         return productDAO;
     }
 
+	public TransactionDAO getTransactionDAO() {
+		if (transactionDAO == null) {
+			transactionDAO = new TransactionDAO(connection);
+		}
+		return transactionDAO;
+	}
+
+    
 }
