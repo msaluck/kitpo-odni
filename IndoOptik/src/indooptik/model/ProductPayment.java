@@ -12,28 +12,37 @@ import java.math.BigDecimal;
  * @author Yoeda H
  */
 public class ProductPayment {
-    private int id;
+    private String id;
+    private String idProductTransaction;
     private int idPaymentMethod;
     private int idPaymentProvider;
-    private BigDecimal amount = new BigDecimal(0.0);
-    private BigDecimal variance = new BigDecimal(0.0);
+    private BigDecimal amount = BigDecimal.ZERO;
+    private BigDecimal variance = BigDecimal.ZERO;
     private String batchNo;
 
     /**
      * @return the id
      */
-    public int getId() {
+    public String getId() {
         return id;
     }
 
     /**
      * @param id the id to set
      */
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    /**
+    public String getIdProductTransaction() {
+		return idProductTransaction;
+	}
+
+	public void setIdProductTransaction(String idProductTransaction) {
+		this.idProductTransaction = idProductTransaction;
+	}
+
+	/**
      * @return the idPaymentMethod
      */
     public int getIdPaymentMethod() {

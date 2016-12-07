@@ -1,5 +1,7 @@
 package indooptik.dao;
 
+import indooptik.model.ProductTransactionDetail;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -8,9 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-import indooptik.model.Product;
-import indooptik.model.ProductTransactionDetail;
 
 public class ProductTransactionDetailDAO {
 	private Connection connection;
@@ -59,12 +58,17 @@ public class ProductTransactionDetailDAO {
 
 	public boolean insert(ProductTransactionDetail productTransactionDetail) {
 		PreparedStatement statement = null;
-		String sql = "INSERT INTO PRODUCT_TRANSACTION_DETAIL (ID, ID_PRODUCT_TRANSACTION, ID_PRODUCT, QTY, PRICE, AMOUNT, DISCOUNT) VALUES ("
-				+productTransactionDetail.getId()+", '" + productTransactionDetail.getIdProductTransaction() + "', "+productTransactionDetail.getIdProduct()
-				+", "+productTransactionDetail.getQty()+", "+productTransactionDetail.getPrice()+", "+productTransactionDetail.getAmount()
-				+", "+productTransactionDetail.getDiscount()+");";
+		String sql = "INSERT INTO PRODUCT_TRANSACTION_DETAIL (ID_PRODUCT_TRANSACTION, ID_PRODUCT, QTY, PRICE, AMOUNT, DISCOUNT) VALUES (?,?,?,?,?,?)";
 		try {            
 			statement = (PreparedStatement) connection.prepareStatement(sql);
+
+			statement.setString(1, productTransactionDetail.getIdProductTransaction());
+			statement.setInt(2, productTransactionDetail.getIdProduct());
+			statement.setInt(3, productTransactionDetail.getQty());
+			statement.setBigDecimal(4, productTransactionDetail.getPrice());
+			statement.setBigDecimal(5, productTransactionDetail.getAmount());
+			statement.setBigDecimal(6, productTransactionDetail.getDiscount());
+
 			statement.executeUpdate();
 			return true;
 		} catch (SQLException ex) {
@@ -76,46 +80,6 @@ public class ProductTransactionDetailDAO {
 					statement.close();
 				} catch (SQLException ex) {
 					Logger.getLogger(ProductTransactionDetailDAO.class.getName()).log(Level.SEVERE, null, ex);
-				}
-			}
-		}
-	}
-
-	public boolean update(ProductTransactionDetail productTransactionDetail){
-		PreparedStatement statement = null;        
-		String sql = "UPDATE PRODUCT_TRANSACTION_DETAIL SET ID_PRODUCT = "
-				+ productTransactionDetail.getIdProduct()
-				+ ", "
-				+ "QTY = "
-				+ productTransactionDetail.getQty()
-				+ ", "
-				+ "PRICE = "
-				+ productTransactionDetail.getPrice()
-				+ ", "
-				+ "AMOUNT = "
-				+ productTransactionDetail.getAmount()
-				+ ", "
-				+ "DISCOUNT = "
-				+ productTransactionDetail.getDiscount()
-				+ "WHERE ID = "
-				+ productTransactionDetail.getId()
-				+ " AND ID_PRODUCT_TRANSACTION = "
-				+ "'"
-				+ productTransactionDetail.getIdProductTransaction()
-				+ "'";
-		try {
-			statement = (PreparedStatement) connection.prepareStatement(sql);
-			statement.executeUpdate();           
-			return true;
-		} catch (SQLException ex) {
-			Logger.getLogger(ProductTransactionDAO.class.getName()).log(Level.SEVERE, null, ex);
-			return false;
-		} finally {
-			if (statement != null) {
-				try {
-					statement.close();
-				} catch (SQLException ex) {
-					Logger.getLogger(ProductTransactionDAO.class.getName()).log(Level.SEVERE, null, ex);
 				}
 			}
 		}

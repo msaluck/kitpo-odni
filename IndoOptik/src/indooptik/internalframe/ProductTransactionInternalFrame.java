@@ -72,6 +72,10 @@ public class ProductTransactionInternalFrame extends JInternalFrame{
 	private JLabel transactionIdField;
 	private Map<String, ProductTransactionDetail> productTransactionDetailMap;
 	private DefaultTableModel defaultTableModel;
+	private BigDecimal totalGrossPayment = BigDecimal.ZERO;
+	private BigDecimal totalDiscount = BigDecimal.ZERO;
+	private BigDecimal cash = BigDecimal.ZERO;
+	private BigDecimal nonCash = BigDecimal.ZERO;
 
 	public void setProductTransactionController(ProductTransactionController productTransactionController) {
 		this.productTransactionController = productTransactionController;
@@ -214,11 +218,11 @@ public class ProductTransactionInternalFrame extends JInternalFrame{
 		JButton inputBtn = new JButton("+");
 		inputBtn.setBounds(480, 10, 50, 30);
 		downPanel.add(inputBtn);
-		
+
 		Object [] columnsName = {"Nama Produk","Qty","Harga","Sub Total"};
 
 		defaultTableModel = new DefaultTableModel(columnsName, 0);
-		
+
 		productTransactionTbl = new JTable();
 		productTransactionTbl.setModel(defaultTableModel);
 
@@ -306,7 +310,7 @@ public class ProductTransactionInternalFrame extends JInternalFrame{
 		instanceChkBox = new JCheckBox();
 		instanceChkBox.setText("Instansi");
 		instanceChkBox.setBounds(233, 104, 95, 20);
-		rightPanel.add(instanceChkBox);
+		//rightPanel.add(instanceChkBox);
 
 		instanceChkBox.addActionListener(new ActionListener() {
 
@@ -319,7 +323,7 @@ public class ProductTransactionInternalFrame extends JInternalFrame{
 		transferChkBox = new JCheckBox();
 		transferChkBox.setText("Transfer");
 		transferChkBox.setBounds(233, 134, 95, 20);
-		rightPanel.add(transferChkBox);
+		//rightPanel.add(transferChkBox);
 
 		transferChkBox.addActionListener(new ActionListener() {
 
@@ -363,6 +367,14 @@ public class ProductTransactionInternalFrame extends JInternalFrame{
 		cashDpField.setEditable(false);
 		cashDpField.setBounds(117, 10, 200, 20);
 		cashPanel.add(cashDpField);
+		
+		cashDpField.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				count();
+			}
+		});
 
 		JPanel nonCashPanel = new JPanel();
 		nonCashPanel.setLayout(null);
@@ -399,6 +411,14 @@ public class ProductTransactionInternalFrame extends JInternalFrame{
 		nonCashDpField.setEditable(false);
 		nonCashDpField.setBounds(117, 70, 200, 20);
 		nonCashPanel.add(nonCashDpField);
+		
+		nonCashDpField.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				count();
+			}
+		});
 
 		JLabel lblDpKartu = new JLabel();
 		lblDpKartu.setText("DP Kartu");
@@ -504,10 +524,19 @@ public class ProductTransactionInternalFrame extends JInternalFrame{
 		getContentPane().add(panel, null);
 
 		initTransaction();
-		
+
 		totalGrossPayField.setText("0");
 		totalDiscountField.setText("0");
 		remainingPaymentField.setText("0");
+	}
+
+	protected void count() {
+		cash = cashDpField.getText() == null ? BigDecimal.ZERO : new BigDecimal(cashDpField.getText());
+		nonCash = nonCashDpField.getText() == null ? BigDecimal.ZERO : new BigDecimal(nonCashDpField.getText());
+
+		BigDecimal remaining = totalGrossPayment.subtract(totalDiscount).subtract(cash).subtract(nonCash);
+
+		remainingPaymentField.setText(remaining.toPlainString());
 	}
 
 	private void initTransaction() {
@@ -561,55 +590,55 @@ public class ProductTransactionInternalFrame extends JInternalFrame{
 
 			productTransactionDetailMap.put(product.getBarcode(), productTransactionDetail);
 		} else {
-			
+
 			productTransactionDetailMap.get(product.getBarcode()).setQty(productTransactionDetailMap.get(product.getBarcode()).getQty() + (qty==null? 1 : Integer.parseInt(qty)));
 			productTransactionDetailMap.get(product.getBarcode()).setAmount(new BigDecimal(productTransactionDetailMap.get(product.getBarcode()).getQty()).multiply(product.getPrice()));
-			
+
 		}
 
 		clearTableData();
-		
+
 		for (ProductTransactionDetail transactionDetail : productTransactionDetailMap.values()) {
-			
+
 			Vector vector = new Vector<>();
 			vector.add(transactionDetail.getProductName());
 			vector.add(transactionDetail.getQty());
 			vector.add(transactionDetail.getPrice().intValue());
 			vector.add(transactionDetail.getAmount().intValue());
-			
+
 			((DefaultTableModel) productTransactionTbl.getModel()).addRow(vector);
 		}
-		
+
 		updatePayment(productTransactionDetailMap.values());
 	}
 
 	private void updatePayment(Collection<ProductTransactionDetail> collection) {
-		BigDecimal totalGrossPayment = BigDecimal.ZERO;
+		
 		for (ProductTransactionDetail productTransactionDetail : collection) {
 			totalGrossPayment = totalGrossPayment.add(productTransactionDetail.getAmount());
 		}
-		System.out.println(totalGrossPayment.intValueExact());
+
 		totalGrossPayField.setText(""+totalGrossPayment.intValueExact());
-		
+
 		/*BigDecimal totalDiscount = BigDecimal.ZERO;
-		
+
 		totalDiscountField.setText(totalDiscount.toPlainString());
-		
+
 		System.out.println(cashDpField.getText());
 		System.out.println(nonCashDpField.getText());
-		
+
 		BigDecimal cash = cashDpField.getText() == null ? BigDecimal.ZERO : new BigDecimal(cashDpField.getText());
 		BigDecimal nonCash = nonCashDpField.getText() == null ? BigDecimal.ZERO : new BigDecimal(nonCashDpField.getText());
-		
+
 		BigDecimal remaining = totalGrossPayment.subtract(totalDiscount).subtract(cash).subtract(nonCash);
-		
+
 		remainingPaymentField.setText(remaining.toPlainString());*/
 	}
 
 	private void clearTableData() {
 		int row = ((DefaultTableModel) productTransactionTbl.getModel()).getRowCount();
 		System.out.println("row : "+row);
-		
+
 		if (row > 0) {
 			for (int i = row - 1; i > -1; i--) {
 				System.out.println("row ke"+i);

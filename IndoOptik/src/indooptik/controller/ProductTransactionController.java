@@ -6,10 +6,12 @@ import java.util.Map;
 
 import indooptik.dao.DAOFactory;
 import indooptik.dao.ProductDAO;
+import indooptik.dao.ProductPaymentDAO;
 import indooptik.dao.ProductTransactionDAO;
 import indooptik.dao.ProductTransactionDetailDAO;
 import indooptik.internalframe.ProductTransactionInternalFrame;
 import indooptik.model.Product;
+import indooptik.model.ProductPayment;
 import indooptik.model.ProductTransaction;
 import indooptik.model.ProductTransactionDetail;
 
@@ -19,6 +21,7 @@ public class ProductTransactionController {
 	ProductTransactionDAO productTransactionDAO;
 	ProductTransactionDetailDAO productTransactionDetailDAO;
 	ProductDAO productDAO;
+	ProductPaymentDAO productPaymentDAO;
 	Map<String, Product> productMap = new HashMap<String, Product>();
 	
 	public ProductTransactionController(ProductTransactionInternalFrame productTransactionInternalFrame) {
@@ -26,7 +29,7 @@ public class ProductTransactionController {
 		this.productTransactionDAO = DAOFactory.create().getProductTransactionDAO();
 		this.productTransactionDetailDAO = DAOFactory.create().getProductTransactionDetailDAO();
 		this.productDAO = DAOFactory.create().getProductDAO();
-		System.out.println("JALAN NGGA SIH");
+		this.productPaymentDAO = DAOFactory.create().getProductPaymentDAO();
 		setProductMap(poolingProduct()); 
 	}
 	
@@ -34,14 +37,11 @@ public class ProductTransactionController {
 		Map<String, Product> resultMap = new HashMap<String, Product>();
 		
 		List<Product> products = productDAO.retreiveALL();
-		System.out.println(products.size());
 		
 		for (Product product : products) {
 			System.out.println(product);
 			resultMap.put(product.getBarcode(), product);
 		}
-		System.out.println(resultMap);
-		
 		return resultMap;	
 	}
 	
@@ -53,6 +53,10 @@ public class ProductTransactionController {
 		for (ProductTransactionDetail productTransactionDetail : transactionDetails) {
 			productTransactionDetailDAO.insert(productTransactionDetail);
 		}
+	}
+	
+	public void saveProductPayment(ProductPayment productPayment) {
+		productPaymentDAO.insert(productPayment);
 	}
 
 	public Map<String, Product> getProductMap() {
