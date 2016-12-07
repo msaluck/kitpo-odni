@@ -19,6 +19,7 @@ import java.awt.event.ActionListener;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -69,7 +70,8 @@ public class ProductTransactionInternalFrame extends JInternalFrame{
 	private JTextField textField_2;
 	private JLabel transactionDateField;
 	private JLabel transactionIdField;
-	private Map<String, ProductTransactionDetail> productTransactionDetailMap; 
+	private Map<String, ProductTransactionDetail> productTransactionDetailMap;
+	private DefaultTableModel defaultTableModel;
 
 	public void setProductTransactionController(ProductTransactionController productTransactionController) {
 		this.productTransactionController = productTransactionController;
@@ -212,22 +214,13 @@ public class ProductTransactionInternalFrame extends JInternalFrame{
 		JButton inputBtn = new JButton("+");
 		inputBtn.setBounds(480, 10, 50, 30);
 		downPanel.add(inputBtn);
+		
+		Object [] columnsName = {"Nama Produk","Qty","Harga","Sub Total"};
 
+		defaultTableModel = new DefaultTableModel(columnsName, 0);
+		
 		productTransactionTbl = new JTable();
-
-		productTransactionTbl.setModel(new DefaultTableModel(
-				new Object [][] {},
-				new String [] {"Nama Barang", "Qty", "Harga Satuan", "Harga Total"}) {
-			
-			Class[] types = new Class [] {
-					java.lang.String.class, java.lang.Integer.class, BigDecimal.class, BigDecimal.class
-			};
-
-			public Class getColumnClass(int columnIndex) {
-				return types [columnIndex];
-			}
-		}
-				);
+		productTransactionTbl.setModel(defaultTableModel);
 
 		if (productTransactionTbl.getColumnModel().getColumnCount() > 0) {
 			productTransactionTbl.getColumnModel().getColumn(0).setPreferredWidth(250);
@@ -351,75 +344,75 @@ public class ProductTransactionInternalFrame extends JInternalFrame{
 			}
 		});
 
-		JPanel panel_1 = new JPanel();
-		panel_1.setLayout(null);
-		panel_1.setOpaque(false);
-		panel_1.setForeground(Color.WHITE);
-		panel_1.setBorder(new EtchedBorder(EtchedBorder.LOWERED, Color.WHITE, null));
-		panel_1.setBounds(10, 165, 336, 40);
-		rightPanel.add(panel_1);
+		JPanel cashPanel = new JPanel();
+		cashPanel.setLayout(null);
+		cashPanel.setOpaque(false);
+		cashPanel.setForeground(Color.WHITE);
+		cashPanel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, Color.WHITE, null));
+		cashPanel.setBounds(10, 165, 336, 40);
+		rightPanel.add(cashPanel);
 
 		JLabel label = new JLabel();
 		label.setText("DP Cash");
 		label.setForeground(Color.WHITE);
 		label.setFont(new Font("Tahoma", Font.BOLD, 12));
 		label.setBounds(10, 10, 90, 20);
-		panel_1.add(label);
+		cashPanel.add(label);
 
 		cashDpField = new NumberField(9);
 		cashDpField.setEditable(false);
 		cashDpField.setBounds(117, 10, 200, 20);
-		panel_1.add(cashDpField);
+		cashPanel.add(cashDpField);
 
-		JPanel panel_2 = new JPanel();
-		panel_2.setLayout(null);
-		panel_2.setOpaque(false);
-		panel_2.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
-		panel_2.setBounds(10, 216, 336, 100);
-		rightPanel.add(panel_2);
+		JPanel nonCashPanel = new JPanel();
+		nonCashPanel.setLayout(null);
+		nonCashPanel.setOpaque(false);
+		nonCashPanel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		nonCashPanel.setBounds(10, 216, 336, 100);
+		rightPanel.add(nonCashPanel);
 
 		JLabel label_1 = new JLabel();
 		label_1.setText("No Kartu");
 		label_1.setForeground(Color.WHITE);
 		label_1.setFont(new Font("Tahoma", Font.BOLD, 12));
 		label_1.setBounds(10, 10, 90, 20);
-		panel_2.add(label_1);
+		nonCashPanel.add(label_1);
 
 		cardNumberField = new NumberField(9);
 		cardNumberField.setEditable(false);
 		cardNumberField.setBounds(117, 10, 200, 20);
-		panel_2.add(cardNumberField);
+		nonCashPanel.add(cardNumberField);
 
 		JLabel label_5 = new JLabel();
 		label_5.setText("Trace No");
 		label_5.setForeground(Color.WHITE);
 		label_5.setFont(new Font("Tahoma", Font.BOLD, 12));
 		label_5.setBounds(10, 40, 90, 20);
-		panel_2.add(label_5);
+		nonCashPanel.add(label_5);
 
 		traceNumberField = new JTextField();
 		traceNumberField.setEditable(false);
 		traceNumberField.setBounds(117, 40, 200, 20);
-		panel_2.add(traceNumberField);
+		nonCashPanel.add(traceNumberField);
 
 		nonCashDpField = new NumberField(9);
 		nonCashDpField.setEditable(false);
 		nonCashDpField.setBounds(117, 70, 200, 20);
-		panel_2.add(nonCashDpField);
+		nonCashPanel.add(nonCashDpField);
 
 		JLabel lblDpKartu = new JLabel();
 		lblDpKartu.setText("DP Kartu");
 		lblDpKartu.setForeground(Color.WHITE);
 		lblDpKartu.setFont(new Font("Tahoma", Font.BOLD, 12));
 		lblDpKartu.setBounds(10, 70, 90, 20);
-		panel_2.add(lblDpKartu);
+		nonCashPanel.add(lblDpKartu);
 
 		JPanel panel_3 = new JPanel();
 		panel_3.setLayout(null);
 		panel_3.setOpaque(false);
 		panel_3.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		panel_3.setBounds(10, 327, 336, 70);
-		rightPanel.add(panel_3);
+		//rightPanel.add(panel_3);
 
 		JLabel label_7 = new JLabel();
 		label_7.setText("No. Legalisasi");
@@ -451,7 +444,7 @@ public class ProductTransactionInternalFrame extends JInternalFrame{
 		panel_4.setOpaque(false);
 		panel_4.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		panel_4.setBounds(10, 408, 336, 40);
-		rightPanel.add(panel_4);
+		//rightPanel.add(panel_4);
 
 		JLabel lblDpTransfer = new JLabel();
 		lblDpTransfer.setText("DP Transfer");
@@ -466,12 +459,12 @@ public class ProductTransactionInternalFrame extends JInternalFrame{
 		dpTransferField.setBounds(117, 10, 200, 20);
 		panel_4.add(dpTransferField);
 
-		JPanel panel_5 = new JPanel();
-		panel_5.setLayout(null);
-		panel_5.setOpaque(false);
-		panel_5.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
-		panel_5.setBounds(10, 459, 336, 40);
-		rightPanel.add(panel_5);
+		JPanel remainingPanel = new JPanel();
+		remainingPanel.setLayout(null);
+		remainingPanel.setOpaque(false);
+		remainingPanel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		remainingPanel.setBounds(10, 459, 336, 40);
+		rightPanel.add(remainingPanel);
 
 		JLabel lblSisa = new JLabel();
 		lblSisa.setText("Sisa");
@@ -479,12 +472,12 @@ public class ProductTransactionInternalFrame extends JInternalFrame{
 		lblSisa.setForeground(Color.WHITE);
 		lblSisa.setFont(new Font("Tahoma", Font.BOLD, 12));
 		lblSisa.setBounds(10, 10, 90, 20);
-		panel_5.add(lblSisa);
+		remainingPanel.add(lblSisa);
 
 		remainingPaymentField = new NumberField(9);
 		remainingPaymentField.setEditable(false);
 		remainingPaymentField.setBounds(117, 10, 200, 20);
-		panel_5.add(remainingPaymentField);
+		remainingPanel.add(remainingPaymentField);
 
 		JButton newTransactionBtn = new JButton();
 		newTransactionBtn.setText("Baru");
@@ -511,6 +504,10 @@ public class ProductTransactionInternalFrame extends JInternalFrame{
 		getContentPane().add(panel, null);
 
 		initTransaction();
+		
+		totalGrossPayField.setText("0");
+		totalDiscountField.setText("0");
+		remainingPaymentField.setText("0");
 	}
 
 	private void initTransaction() {
@@ -570,17 +567,54 @@ public class ProductTransactionInternalFrame extends JInternalFrame{
 			
 		}
 
-		((DefaultTableModel) productTransactionTbl.getModel()).setRowCount(productTransactionDetailMap.values().size());
-
+		clearTableData();
+		
 		for (ProductTransactionDetail transactionDetail : productTransactionDetailMap.values()) {
-			System.out.println(transactionDetail);
 			
 			Vector vector = new Vector<>();
 			vector.add(transactionDetail.getProductName());
 			vector.add(transactionDetail.getQty());
-			vector.add(transactionDetail.getPrice());
-			vector.add(transactionDetail.getAmount());
+			vector.add(transactionDetail.getPrice().intValue());
+			vector.add(transactionDetail.getAmount().intValue());
+			
 			((DefaultTableModel) productTransactionTbl.getModel()).addRow(vector);
+		}
+		
+		updatePayment(productTransactionDetailMap.values());
+	}
+
+	private void updatePayment(Collection<ProductTransactionDetail> collection) {
+		BigDecimal totalGrossPayment = BigDecimal.ZERO;
+		for (ProductTransactionDetail productTransactionDetail : collection) {
+			totalGrossPayment = totalGrossPayment.add(productTransactionDetail.getAmount());
+		}
+		System.out.println(totalGrossPayment.intValueExact());
+		totalGrossPayField.setText(""+totalGrossPayment.intValueExact());
+		
+		/*BigDecimal totalDiscount = BigDecimal.ZERO;
+		
+		totalDiscountField.setText(totalDiscount.toPlainString());
+		
+		System.out.println(cashDpField.getText());
+		System.out.println(nonCashDpField.getText());
+		
+		BigDecimal cash = cashDpField.getText() == null ? BigDecimal.ZERO : new BigDecimal(cashDpField.getText());
+		BigDecimal nonCash = nonCashDpField.getText() == null ? BigDecimal.ZERO : new BigDecimal(nonCashDpField.getText());
+		
+		BigDecimal remaining = totalGrossPayment.subtract(totalDiscount).subtract(cash).subtract(nonCash);
+		
+		remainingPaymentField.setText(remaining.toPlainString());*/
+	}
+
+	private void clearTableData() {
+		int row = ((DefaultTableModel) productTransactionTbl.getModel()).getRowCount();
+		System.out.println("row : "+row);
+		
+		if (row > 0) {
+			for (int i = row - 1; i > -1; i--) {
+				System.out.println("row ke"+i);
+				((DefaultTableModel) productTransactionTbl.getModel()).removeRow(i);
+			}
 		}
 	}
 
